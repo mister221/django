@@ -1,0 +1,47 @@
+{% extends 'employees/base.html' %}
+
+{% block style %}
+  <style>
+        .table{
+      width:80%;
+      margin:50px auto;
+      border-radius:20px;
+      }
+      th{
+        padding:20px 0;
+      }
+  </style>
+
+{% endblock style %}
+
+{% block content %}
+
+<table class="table table-dark">
+  <thead>
+    <th scope="col">NAME</th>
+    <th scope="col">EMPLOYEE ID</th>
+    <th>Role</th>
+    <th scope="col">EMAIL</th>
+    <th scope="col">PHONE</th>
+    <th scope="col">SEX</th>
+  </thead>
+  <tbody>
+    {% for item in objects %}
+    <tr>
+      <td>{{item.name}}</td>
+      <td>{{item.employee_id}}</td>
+      <td>{{item.role}}</td>
+
+      <td>{{item.email}}</td>
+      <td>{{item.phone}}</td>
+      <td>{{item.sex}}</td>
+      <td><a class="btn btn-info" href="{% url 'employee-update' item.employee_id %}"><i class="fa fa-edit"></i>Edit</a></td>
+      <td><a href="{% url 'employee-delete' item.employee_id %}" class="btn btn-danger">Delete</a></td>
+      
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
