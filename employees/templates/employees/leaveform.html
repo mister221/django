@@ -1,0 +1,12 @@
+{% extends 'employees/base.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+	{% csrf_token %}
+	{{form}}
+
+	<button class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock content %}

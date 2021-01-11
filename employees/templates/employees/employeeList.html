@@ -29,7 +29,8 @@
     {% for item in objects %}
     <tr>
       <td>{{item.name}}</td>
-      <td>{{item.employee_id}}</td>
+
+      <td><a href="{% url 'employee-detail-view' item.employee_id %}">{{item.employee_id}}</a></td>
       <td>{{item.role}}</td>
 
       <td>{{item.email}}</td>

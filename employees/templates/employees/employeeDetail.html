@@ -1,0 +1,20 @@
+{% extends 'employees/base.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+	  <div class="card-body">
+	    <h5 class="card-title">{{employee.employee_id}}</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">{{employee.role}}</h6>
+	    <p>{{employee.email}}</p>
+	    <!-- <form action="" method="POST"> -->
+	    	<!-- {% csrf_token %} -->
+		    <a  href="{% url 'employee-attendance' employee.employee_id %}" class="card-link">Login</a>
+		    <a href="{% url 'employee-attendance-update' employee.employee_id %}" class="card-link">Logout</a>
+	    <!-- </form> -->
+	    <hr>
+	    <a class="btn btn-info" href="{% url 'employee-leave' employee.employee_id %}">Apply For Leave</a>
+	  </div>
+</div>
+
+{% endblock content %}

@@ -9,6 +9,11 @@ urlpatterns = [
 	path('add/department',views.AddDepartment,name='add-department'),
 	path('list/',views.EmployeeList,name='employee-list'),
 	path('delete/<str:id>/',views.EmployeeDelete,name='employee-delete'),
+	path('detail/<str:id>/',views.EmployeeDetailView,name='employee-detail-view'),
+	path('attendance/<str:id>/',views.EmployeeAttendance,name='employee-attendance'),
+	path('attendance/logout/<str:id>',views.EmployeeAttendanceLogout,name='employee-attendance-update'),
+	path('leave/<str:id>',views.EmployeeLeave,name='employee-leave'),
+
 
 
 ]

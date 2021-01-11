@@ -3,7 +3,7 @@ from django import forms
 from django.db import models
 from django.forms import ModelForm
 
-from .models import (Employee,Department,Role,Leave )
+from .models import (Employee,Department,Role,Leave,Attendance )
 
 class DepartmentForm(ModelForm):
 	dept_mgr = forms.ModelChoiceField(queryset=Employee.objects.all())
@@ -37,4 +37,9 @@ class EmployeeForm(ModelForm):
 class LeaveForm(ModelForm):
 	class Meta:
 		model = Leave 
+		fields = '__all__'
+
+class AttendanceForm(ModelForm):
+	class Meta:
+		model = Attendance 
 		fields = '__all__'

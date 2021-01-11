@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
+from django.shortcuts import get_list_or_404, get_object_or_404
 from .forms import  *
 
 from .models import *
+import datetime
 
 # Create your views here.
 
@@ -77,4 +79,50 @@ def EmployeeDelete(request,id):
 	employee = Employee.objects.get(employee_id=id)
 	employee.delete()
 	return redirect('/employee/list')
+
+def EmployeeDetailView(request,id):
+	employee = Employee.objects.get(employee_id=id)
+	return render(request,'employees/employeeDetail.html',{'employee':employee})
 	
+def EmployeeAttendance(request,id=0):
+	
+	form = ''
+	created = Attendance.objects.filter(employee_id=id,date=datetime.datetime.now().date())
+	if not created:
+
+		form = Attendance(id)
+
+		form.date = datetime.datetime.now().date()
+		form.login_time = datetime.datetime.now() 
+		created = Attendance.objects.filter(employee_id =id)
+		
+		form.save()
+	
+	# return redirect('/employee/detail/'+id)
+	else:
+		form = 'already logged in'
+	return redirect('/employee/detail/'+id)
+	
+
+def EmployeeAttendanceLogout(request,id):
+	form = Attendance.objects.get(employee_id=id,date=datetime.datetime.now().date())
+	form.logout_time = datetime.datetime.now()
+	form.save()
+
+	return redirect('/employee/detail/'+id)
+
+def EmployeeLeave(request,id):
+	if request.method == 'GET':
+		data = {'employee_id':id}
+		form = LeaveForm(initial=data)
+		
+	else:
+		form = LeaveForm(request.POST)
+		if form.is_valid():
+			form.save()
+		return redirect('/employee/detail/'+id)
+	context = {
+		'form':form
+	}
+
+	return render(request,'employees/leaveform.html',context)
