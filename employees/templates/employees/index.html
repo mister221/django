@@ -48,11 +48,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#myAlert" data-toggle="collapse">Alert</a>
+                <a class="nav-link" href="{% url 'user-logout' %}" data-toggle="collapse">Logout</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
-            </li>
+            
         </ul>
     </div>
 </nav>
@@ -60,14 +58,7 @@
     <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0" id="sidebar" role="navigation">
             <ul class="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
-                    <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                       <li class="nav-item"><a class="nav-link" href="">Report 1</a></li>
-                       <li class="nav-item"><a class="nav-link" href="">Report 2</a></li>
-                    </ul>
-                </li>
+                
                 <li class="nav-item"><a class="nav-link" href="{% url 'add-employee' %}">Add Employee</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'add-role' %}">Add Role</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'add-department' %}">Add Department</a></li>
@@ -143,9 +134,9 @@
             <hr>
             <div class="row placeholders mb-3">
                 <div class="col-6 col-sm-3 placeholder text-center">
-                    <img src="//placehold.it/200/dddddd/fff?text=1" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                    <h4>Responsive</h4>
-                    <span class="text-muted">Device agnostic</span>
+                    <img src="{% static 'images/attendance.jpg' %}" alt="Generic placeholder thumbnail" width="200px" height="200px" border-radius="30px">
+                    <h4>{{attendance}}</h4>
+                    <span class="text-muted"></span>
                 </div>
                 <div class="col-6 col-sm-3 placeholder text-center">
                     <img src="//placehold.it/200/e4e4e4/fff?text=2" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">

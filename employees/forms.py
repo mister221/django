@@ -4,12 +4,17 @@ from django.db import models
 from django.forms import ModelForm
 
 from .models import (Employee,Department,Role,Leave,Attendance )
-
+from bootstrap_datepicker_plus import DatePickerInput
 class DepartmentForm(ModelForm):
 	dept_mgr = forms.ModelChoiceField(queryset=Employee.objects.all())
 	class Meta:
 		model = Department
 		fields = "__all__"
+		widgets = {
+			'dept_id':forms.TextInput(attrs={'placeholder':'DeptId','class':'username'}),
+			'dept_name':forms.TextInput(attrs={'placeholder':'Dept Name','class':'username'}),
+			'dept_mgr':forms.TextInput(attrs={'placeholder':'Dept Mgr','class':'username'}),
+		}
 
 
 class RoleForm(ModelForm):
@@ -34,10 +39,20 @@ class EmployeeForm(ModelForm):
 
 		}
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class LeaveForm(ModelForm):
+
+
 	class Meta:
 		model = Leave 
 		fields = '__all__'
+		widgets = {
+            'date': DateInput(),
+        }
+
 
 class AttendanceForm(ModelForm):
 	class Meta:
