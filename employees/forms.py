@@ -6,14 +6,14 @@ from django.forms import ModelForm
 from .models import (Employee,Department,Role,Leave,Attendance )
 from bootstrap_datepicker_plus import DatePickerInput
 class DepartmentForm(ModelForm):
-	dept_mgr = forms.ModelChoiceField(queryset=Employee.objects.all())
+	dept_mgr = forms.ModelChoiceField(queryset=Employee.objects.all(),empty_label='Dept Manager')
 	class Meta:
 		model = Department
 		fields = "__all__"
 		widgets = {
 			'dept_id':forms.TextInput(attrs={'placeholder':'DeptId','class':'username'}),
 			'dept_name':forms.TextInput(attrs={'placeholder':'Dept Name','class':'username'}),
-			'dept_mgr':forms.TextInput(attrs={'placeholder':'Dept Mgr','class':'username'}),
+			'dept_mgr':forms.TextInput(attrs={'placeholder':'Dept Mgr',}),
 		}
 
 
