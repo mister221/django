@@ -18,6 +18,7 @@ class DepartmentForm(ModelForm):
 
 
 class RoleForm(ModelForm):
+	department = forms.ModelChoiceField(queryset = Department.objects.all(),empty_label="Select Department")
 	class Meta:
 		model = Role 
 		fields = '__all__'

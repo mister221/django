@@ -13,12 +13,15 @@ def Dashboard(request):
 		role_list = Role.objects.all().count()
 		employees = Employee.objects.all()[0:10]
 		attendance_count = Attendance.objects.filter(date=datetime.datetime.now().date()).count()
+		
+		employees_on_time = Attendance.objects.filter(login_time__lt = "10:0:0:0",date=datetime.datetime.now().date()).count()
 		context = {
 			'employees_list':employees,
 			'employees':employees_list,
 			'department':department_list,
 			'role':role_list,
 			'attendance':attendance_count,
+			'employees_on_time':employees_on_time,
 		}
 		return render(request, 'employees/index.html',context)
 

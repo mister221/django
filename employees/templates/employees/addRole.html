@@ -1,5 +1,6 @@
 {% extends 'employees/base.html' %}
 
+
 {% block style %}
 <style>
       html, body {
@@ -29,6 +30,10 @@
       opacity: 0.3;
       }
       .main-block {
+      position: absolute;
+      top: 50%;
+      left:50%;
+      transform: translate(-50%,-50%);
       max-width: 340px; 
       min-height: 460px; 
       padding: 10px 0;
@@ -125,28 +130,25 @@
       button:hover {
       background: #26a9e0;
       }
+      form input{
+            padding:10px;
+            margin-left: 10px;
+      }
     </style>
 {% endblock style %}
 
 {% block content %}
 
-<!-- 	<form action="" method="POST">
-		{% csrf_token %}
-		{{form}}
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</form>
-
-<!DOCTYPE html> -->
 
 <div class="main-block">
-      <h1>Registration</h1>
+      <h1>Add Role To Department</h1>
       <form action="" method="POST">
         {% csrf_token %}
         
         <hr>
-        <label id="icon" for="name"><i class="fas fa-tasks"></i></label>
+        <label id="icon" for="name"><i class="fas fa-tasks mr-2"></i></label>
         <input type="text" name="name" id="name" placeholder="Role Name" required/>
-        <label id="icon" for="name"><i class="fas fa-user"></i></label>
+        <label id="icon" for="name"><i class="fas fa-user mr-2"></i></label>
         {{form.department}}
         
         <hr>

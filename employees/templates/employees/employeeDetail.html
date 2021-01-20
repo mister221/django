@@ -1,8 +1,22 @@
 {% extends 'employees/base.html' %}
+{% block style %}
+<style type="text/css">
+	.card{
+	position: absolute;
+	margin:0px auto;
+	left: 50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+}
+
+</style>
+
+
+{% endblock style%} 
 
 {% block content %}
 
-<div class="card" style="width: 18rem;">
+<div class="card  justify-content-center" style="width: 18rem;">
 	  <div class="card-body">
 	    <h5 class="card-title">{{employee.employee_id}}</h5>
 	    <h6 class="card-subtitle mb-2 text-muted">{{employee.role}}</h6>
