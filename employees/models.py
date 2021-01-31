@@ -39,6 +39,7 @@ class Employee(models.Model):
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
     phone = models.CharField(validators=[phone_regex],max_length=10)
     address = models.TextField()
+    leave_count = models.IntegerField(default=0,null=True, blank=True)
     # user_id = models.OneToOneField(User)
 
 
